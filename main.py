@@ -33,15 +33,17 @@ def read_textual_features(directory, filename, number_of_examples_to_load):
             line_words = line.split()
             images.append(line_words[0])
             number_of_features = int(line_words[1])
-            for i in range(0,number_of_features,2):
-                word = line_words[i+2].decode('utf-8')
+            for j in range(0,number_of_features,2):
+                word = line_words[j+2].decode('utf-8')
                 word = p_stemmer.stem(word)
-                weight = float(line_words[i+3]) / 100000
-                if (word not in stop) and (word.isdigit() == False):        # (weight > 2000)
+                weight = float(line_words[j+3]) / 100000
+                if (word not in stop) and (word.isdigit() == False):        # (weight > 2000)   # TODO filter 2 char words
                     #word = str(word)        # Because it is unicode - special chars cannot be converted to ascii
                     words.append(word)      # TODO add only unique words
                     unique_words.add(word)
                     weights.append(weight)
+            if( (i+1)%1000 == 0 ):
+                print("Read %d of %d\n" % ( i+1, number_of_examples_to_load))
             examples.append(words)
             examples_weights.append(weights)
     print(number_of_lines)
@@ -59,11 +61,13 @@ def train_lda():
     return models.ldamodel.LdaModel(corpus, num_topics=20, id2word = dictionary, passes=20)
 
 
+
+
 # Main Functio
 if __name__ == '__main__':
     # Data directory of train file
     data_directory = '/media/dmacjam/Data disc/Open data/TBIR/data_6stdpt/Features/Textual/'
-    read_textual_features(data_directory, 'train_data.txt', 1000)
+    read_textual_features(data_directory, 'train_data.txt', 3000)
     #print(images)
     print(len(examples))
     print(len(examples[0]), examples[0])
