@@ -10,6 +10,7 @@ Usage:
 
 import numpy as np
 import os
+import time
 
 
 def readVisMatrix(directory, filename, numObjects):
@@ -44,6 +45,10 @@ def matrix2File(npArray, directory='', filename='imgVisualMatrix.npy'):
 
 
 if __name__ == '__main__':
-    matrix2File(readVisMatrix('/Users/enzo/Projects/TBIR/dataset/Features/Visual/', 'scaleconcept16_data_visual_vgg16-relu7.dfeat', 10000))
-    c = np.load("visualMatrix.npy")
+    #matrix2File(readVisMatrix('/Users/enzo/Projects/TBIR/dataset/Features/Visual/', 'scaleconcept16_data_visual_vgg16-relu7.dfeat', 300000))
+    t1 = time.time()
+    c = np.load("imgVisualMatrix.npy")
+    t2 = time.time()
+    print("Time to load: %s" % str(t2-t1))
+    print("The dimensions are: %s X %s" % (c.shape[0], c.shape[1]))
     print("First line of the matrix:\n%s" % c[0])
