@@ -7,7 +7,9 @@ from pprint import pprint
 from sklearn.feature_extraction.text import CountVectorizer
 from gensim.models import Word2Vec
 import time
+import logging
 
+logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
 images = []
 examples = []
@@ -79,17 +81,19 @@ def representAsBow():
     vocab = vectorizer.get_feature_names()
     print(vocab[:100])
 
-def loadWord2vecModel(directory, filename):
+def loadWord2vecModel(directory, filename, binary=False):
     '''
     Load Word2Vec model from file.
     :param directory:
     :param filename:
     :return:
     '''
-    model = Word2Vec.load_word2vec_format(os.path.join(directory, filename), binary=True)
+    model = Word2Vec.load_word2vec_format(os.path.join(directory, filename), binary=binary)
     # Print a wordsXfeatures matrrix shape
     print(model.syn0.shape)
-    print(model["car"])
+    #print(model["car"])
+    print(model["000qUQAfomr0QAm4"])
+    #accuracy = model.accuracy('/home/dmacjam/Word2Vec/questions-words.txt')
     return model
 
 def loadImageFeatures(directory, filename):
@@ -174,7 +178,7 @@ if __name__ == '__main__':
     #print(lda_model.print_topics(num_topics=10))
 
     representAsBow()
-    word_vector_model = loadWord2vecModel(word_to_vec_trained_model_data_directory,'vectors.bin')
+    word_vector_model = loadWord2vecModel(word_to_vec_trained_model_data_directory,'vectors.bin', True)
 
     examples_average_vectors = getAvgFeatureVectors(examples, word_vector_model, examples_weights)
     print(examples_average_vectors.shape)
