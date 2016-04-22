@@ -9,6 +9,8 @@ import logging
 from Word2VecVectors import Word2VecProcessing
 from DataManager import DataManager
 
+import time
+
 # Set up gensim logging
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
@@ -20,7 +22,8 @@ unique_words = set()
 
 # Set up data directories
 word_to_vec_trained_model_data_directory = '/home/dmacjam/Word2Vec/'
-websites_data_directory = '/media/dmacjam/Data disc/Open data/TBIR/data_6stdpt/Features/Textual/'
+#websites_data_directory = '/media/dmacjam/Data disc/Open data/TBIR/data_6stdpt/Features/Textual/'
+websites_data_directory = '../data/TBIRDataSet/Features/Textual/'
 
 
 def readTextualFeatures(directory, filename, number_of_examples_to_load):
@@ -115,7 +118,7 @@ def loadImageIds(directory, filename):
 if __name__ == '__main__':
 
 
-    readTextualFeatures(websites_data_directory, 'train_data.txt', 5000)
+    readTextualFeatures(websites_data_directory, 'train_data.txt', 10000)
     #print(images)
     #print(len(examples[0]), examples[0])
     #pprint(examples[:10])
