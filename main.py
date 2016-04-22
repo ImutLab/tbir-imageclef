@@ -7,6 +7,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 import logging
 from Word2VecVectors import Word2VecProcessing
 from DataManager import DataManager
+from ConcatenatedLDA import ConcatenatedLDA
 
 
 # Set up data directories
@@ -51,22 +52,17 @@ def representAsBow():
 
 
 
-def loadImageFeatures(directory, filename):
-    #with open(os.path.join(directory, filename)) as textual_file:
-    print("A")
 
-def loadImageIds(directory, filename):
-    # TODO load file with image ids
-    print("A")
-
-
-
-# Main Functio
+# Main Function
 if __name__ == '__main__':
-
-
     data_manager = DataManager()
-    data_manager.createVocabulary(1000)
+    data_manager.createVocabulary(500)
+    data_manager.concatenateVisualFeatures()
+
+    lda = ConcatenatedLDA(data_manager)
+    lda.trainLDA()
+
+
     #readTextualFeatures(websites_data_directory, 'train_data.txt', 5000)
     #print(images)
     #print(len(examples[0]), examples[0])
