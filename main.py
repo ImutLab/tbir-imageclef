@@ -56,12 +56,14 @@ def representAsBow():
 # Main Function
 if __name__ == '__main__':
     data_manager = DataManager()
-    data_manager.createVocabulary(500)
+    data_manager.createVocabulary(1000)
+    data_manager.divideTrainAndTestData(0.5)
     data_manager.concatenateVisualFeatures()
 
     lda = ConcatenatedLDA(data_manager)
-    lda.trainLDA()
-
+    #lda.trainLDA()
+    lda.loadLDAModel()
+    lda.inferNewDocuments()
 
     #readTextualFeatures(websites_data_directory, 'train_data.txt', 5000)
     #print(images)
