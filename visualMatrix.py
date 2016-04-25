@@ -13,26 +13,36 @@ import os
 import time
 
 
-def readVisMatrix(directory, filename, numObjects):
+def readVisMatrix(textual_img_ids, image_ids, directory, filename):
     '''
     Construct visual feature vectors
     '''
-    vMatrix = np.zeros(shape=(numObjects, 4096), dtype='f')
+    print("=================================================================")
+    print("Reading visual feature Matrix from images features file")
+    numObjects = len(textual_img_ids)
+    vMatrix = np.zeros(shape=(numObjects, 4096), dtype='float32')
     with open(os.path.join(directory, filename), 'r') as fVisual:
         description = fVisual.readline()
         numImgs, numFeatures = description.split()
-        print "%s images, %s features" % (numImgs, numFeatures)
+        print "Reading %s training images from %s images, %s features" % (numObjects, numImgs, numFeatures)
 
-        index = 0
+        textual_index = 0
+        images_index = 0
         for line in fVisual:
-            iv = line.split()
-            imgID, vector = iv[0], iv[1:]
-            vector = [float(vector[i]) for i in range(len(vector))]
-            vMatrix[index] = vector
+            image_id = image_ids[images_index]
+            if image_id == textual_img_ids[textual_index]:
+                iv = line.split()
+                imgID, vector = iv[0], iv[1:]
+                assert(imgID == image_id)
+                vector = [float(vector[i]) for i in range(len(vector))]
+                vMatrix[textual_index] = vector
+                textual_index += 1
+            images_index += 1
 
-            index += 1
-            if index%5000==0: print("Read %d of %d Images" % (index, numObjects))
-            if index >= numObjects: break
+            if (images_index+1)%4000==0:
+                print("Read %d visual features from %d images of %d Images to read." % (textual_index, images_index, numObjects))
+            if textual_index >= numObjects: break
+    print("Done: read visual feature Matrix")
 
     return vMatrix
 
@@ -40,8 +50,15 @@ def matrix2File(npArray, directory='', filename='imgVisualMatrix.npy'):
     '''
     Read numpy matrix into file
     '''
+    print("=================================================================")
+    print("Saving visual feature Matrix numpy file")
+    t0 = time.time()
     #npArray.tofile(os.path.join(directory, filename))
-    np.save(os.path.join(directory, filename), npArray)
+    for i in range(0, npArray.shape[0]/30000):
+        new_npArray = npArray[i*30000:(i+1)*30000]
+        np.save(os.path.join(directory, ('%s'%(i*30000))+filename), new_npArray)
+    np.save(os.path.join(directory, ('300000'+filename)), npArray[300000:])
+    print("Done: save visual feature Matrix (%.3fs)" % (time.time()-t0))
 
 
 if __name__ == '__main__':
