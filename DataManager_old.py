@@ -6,9 +6,12 @@ import pickle
 
 from gensim import corpora
 
-websites_data_directory = '/media/dmacjam/Data disc/Open data/TBIR/data_6stdpt/Features/Textual/'
-images_features_directory = '/media/dmacjam/Data disc/Open data/TBIR/data_6stdpt/Features/Visual/Visual/'
-image_ids_directory= '/media/dmacjam/Data disc/Open data/TBIR/data_6stdpt/Features/'
+# websites_data_directory = '/media/dmacjam/Data disc/Open data/TBIR/data_6stdpt/Features/Textual/'
+websites_data_directory = '/Users/enzo/Projects/TBIR/test/data/TBIRDataSet/Features/Textual/'
+# images_features_directory = '/media/dmacjam/Data disc/Open data/TBIR/data_6stdpt/Features/Visual/Visual/'
+images_features_directory = '/Users/enzo/Projects/TBIR/test/data/TBIRDataSet/Features//Visual/Visual/'
+# image_ids_directory= '/media/dmacjam/Data disc/Open data/TBIR/data_6stdpt/Features/'
+image_ids_directory= '/Users/enzo/Projects/TBIR/test/data/TBIRDataSet/Features/'
 websites_filename = 'train_data.txt'
 images_features_filename = 'scaleconcept16_data_visual_vgg16-relu7.dfeat'
 image_ids_filename = 'scaleconcept16_ImgID.txt_Mod'
@@ -141,7 +144,8 @@ class DataManager(object):
             line_words = line.split()
             self.textual_img_ids.append(line_words[0])
             number_of_features = int(line_words[1])
-            for j in range(0, number_of_features, 2):
+            # for j in range(0, number_of_features, 2):
+            for j in range(0, number_of_features*2, 2):
                 number_of_words += 1
                 word = line_words[j + 2].decode('utf-8')
                 self.processWord(word)
