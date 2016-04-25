@@ -21,10 +21,16 @@ class DataManager(object):
     word2id = dict()
     unique_words = set()
     text_examples_img_ids = []
+    train_text_img_ids = []
+    test_text_img_ids = []
     textual_examples_loaded = 0
     corpus = []
     unique_words_counter = 0
     image_ids = []
+    # train_text_corpus = []
+    test_text_corpus = []
+    test_img_vectors = []
+    divide_index = 0
 
     def __init__(self):
         self._load_image_ids()
@@ -58,30 +64,45 @@ class DataManager(object):
             self.word2id[feature_name] = self.unique_words_counter
             self.unique_words_counter += 1
 
+    def divideTrainAndTestData(self, portion):
+        self.divide_index = int(float(portion) * self.textual_examples_loaded)
+        self.test_text_corpus = self.corpus[:(self.textual_examples_loaded - self.divide_index)]
+        self.corpus = self.corpus[(self.textual_examples_loaded - self.divide_index):]
+        self.train_text_img_ids = self.text_examples_img_ids[(self.textual_examples_loaded - self.divide_index):]
+        self.test_text_img_ids = self.text_examples_img_ids[:(self.textual_examples_loaded - self.divide_index)]
+        print("Train corpus length", len(self.corpus))
+        print("Test corpus length", len(self.test_text_corpus))
+
+
     def concatenateVisualFeatures(self):
         print("Concatenating visual features to textual.")
         visual_lines = DataManager._readImageFeaturesFile()
-        textual_index = 0
+        train_index = 0
+        test_index = 0
         images_index = 0
         for visual_line in visual_lines:
             image_id = self.image_ids[images_index]
-            if image_id == self.text_examples_img_ids[textual_index]:
-                image_corpus_line = self._generateCorpusForImage(visual_line[1:])
-                # Concatenate textual and image vectors
-                self.corpus[textual_index] = self.corpus[textual_index] + image_corpus_line
-                textual_index += 1
+            image_corpus_line = self._generateCorpusForImage(visual_line[1:])
+            if train_index < self.divide_index and image_id == self.train_text_img_ids[train_index]:
+                # Concatenate textual and image vectors to training corpus
+                self.corpus[train_index] = self.corpus[train_index] + image_corpus_line
+                train_index += 1
+            elif test_index < (self.textual_examples_loaded - self.divide_index) and image_id == self.test_text_img_ids[test_index]:
+                # Create only image vector for testing
+                self.test_img_vectors.append(image_corpus_line)
+                test_index += 1
+            elif train_index >= self.divide_index and test_index >= (self.textual_examples_loaded - self.divide_index):
+                break
             images_index += 1
             # Debug print
             if ((images_index + 1) % 4000 == 0):
                 print("Read visual features %d" % (images_index + 1))
             # Stop when all textual examples were found.
-            if ( textual_index >= self.textual_examples_loaded ):
-                break
         print("Done: concatenating visual features to textual")
 
     def _generateCorpusForImage(self, features):
         image_corpus_line = []
-        vector_sum = sum(float(feature_value) for feature_value in features)
+        vector_sum = sum(map(float, features))
         for i in range(0, 4096):
             feature_value = float(features[i]) / vector_sum
             if (feature_value != 0):
@@ -98,7 +119,7 @@ class DataManager(object):
         print("Done loading image ids.")
 
 
-    def createVocabulary(self, number_of_examples_to_load):
+    def createVocabulary(self, number_of_examples_to_load, countSkip=100):
         '''
         Read and preprocess textual features. Create vocabulary and corpus.
         :param directory:
