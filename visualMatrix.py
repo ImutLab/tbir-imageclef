@@ -36,7 +36,7 @@ def readVisMatrix(directory, filename, numObjects):
 
     return vMatrix
 
-def matrix2File(npArray, directory='', filename='imgVisualMatrix.npy'):
+def matrix2File(npArray, directory='/media/dmacjam/Data disc/Open data/TBIR/', filename='imgVisualMatrix.npy'):
     '''
     Read numpy matrix into file
     '''
@@ -45,10 +45,12 @@ def matrix2File(npArray, directory='', filename='imgVisualMatrix.npy'):
 
 
 if __name__ == '__main__':
-    #matrix2File(readVisMatrix('/Users/enzo/Projects/TBIR/dataset/Features/Visual/', 'scaleconcept16_data_visual_vgg16-relu7.dfeat', 300000))
+    matrix2File(readVisMatrix('/media/dmacjam/Data disc/Open data/TBIR/data_6stdpt/Features/Visual/Visual/', 'scaleconcept16_data_visual_vgg16-relu7.dfeat', 400000))
+    '''
     t1 = time.time()
     c = np.load("imgVisualMatrix.npy")
     t2 = time.time()
     print("Time to load: %s" % str(t2-t1))
     print("The dimensions are: %s X %s" % (c.shape[0], c.shape[1]))
     print("First line of the matrix:\n%s" % c[0])
+    '''

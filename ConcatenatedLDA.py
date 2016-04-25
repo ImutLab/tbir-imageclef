@@ -3,7 +3,7 @@ from DataManager import DataManager
 import numpy as np
 from scipy import linalg
 
-lda_model_filename = '/media/dmacjam/Data disc/Open data/lda-model-100-20K'
+lda_model_filename = '/media/dmacjam/Data disc/Open data/lda-model-X'
 
 class ConcatenatedLDA(object):
     data_manager = None
@@ -15,7 +15,7 @@ class ConcatenatedLDA(object):
     def trainLDA(self):
         assert isinstance(self.data_manager, DataManager)
         self.lda_model = gensim.models.ldamodel.LdaModel(corpus=self.data_manager.corpus, id2word=self.data_manager.id2word,
-                                                         num_topics= 100, update_every=1, passes=1, chunksize=2000)
+                                                         num_topics= 10, update_every=1, passes=1, chunksize=2000)
 
         # Save the model.
         self.lda_model.save(lda_model_filename)
@@ -39,8 +39,8 @@ class ConcatenatedLDA(object):
 
         for i, result in enumerate(results):
             max_indices = np.argsort(result)[::-1]
-            if result[max_indices[0]] > result[max_indices[1]]:
-                print("Example #",i,"with top similarities:", max_indices[0])
+            predicted_img_ids = self.data_manager.test_img_vectors_ids[max_indices]
+            print("Example #",i,"with top similarities:", predicted_img_ids[:10])
 
 
         #for doc in self.data_manager.corpus[-2:]:
