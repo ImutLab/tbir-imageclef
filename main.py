@@ -1,39 +1,47 @@
-import numpy as np
-import os
-
-from gensim import corpora, models
-from pprint import pprint
-from sklearn.feature_extraction.text import CountVectorizer
+from TextualDictionary import TextualDictionary
 import logging
-from Word2VecVectors import Word2VecProcessing
 from DataManager import DataManager
+from ConcatenatedCorpus import ConcatenatedCorpus
 from ConcatenatedLDA import ConcatenatedLDA
-
-
-# Set up data directories
-word_to_vec_trained_model_data_directory = '/home/dmacjam/Word2Vec/'
+from TestingDataManager import TestingDataManager
+from TeaserDataManager import TeaserDataManager
 
 # Set up gensim logging
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
 
 
-# Main Function
 if __name__ == '__main__':
-    data_manager = DataManager()
 
-    #data_manager.createDictionary()
+    # Create vocabulary - either custom or by gensim
+    textual_dictionary = TextualDictionary()
+    #textual_dictionary.create_custom_vocabulary()
+    textual_dictionary.create_gensim_dictionary()
 
-    data_manager.createTextualVocabulary()
-    #data_manager.divideTrainAndTestData()
+    data_manager = DataManager(textual_dictionary)
+    data_manager.count_textual_training_img_ids()
+    #data_manager.load_testing_img_ids()
 
-    # Training
-    #data_manager.prepareVisualFeatures()
+    # Inicialize text corpus for training.
+    corpus = ConcatenatedCorpus(len(data_manager.textual_train_image_ids), textual_dictionary)
 
+    # Inicilize LDA and start training.
+    lda = ConcatenatedLDA(data_manager, corpus)
+    lda.train_lda()
 
+    # Testing data
+    #testing_data_manager = TestingDataManager(data_manager, lda)
+    #testing_data_manager.create_testing_img_document_topic_matrix()
+    #testing_data_manager.create_testing_textual_document_topic_matrix()
+    #testing_data_manager.create_ranking()
 
-    #lda = ConcatenatedLDA(data_manager)
-    #lda.trainLDA()
-    #lda.loadLDAModel()
-    #lda.inferNewDocuments()
+    # Teaser data.
+    teaser_data_manager = TeaserDataManager(data_manager, lda)
+    teaser_data_manager.create_img_document_topic_matrix()
+    teaser_data_manager.create_textual_document_topic_matrix()
+    teaser_data_manager.create_ranking()
+
+    #teaser_data_manager.create_hellinger_ranking()
+    #teaser_data_manager.predict()
+
 

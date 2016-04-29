@@ -1,0 +1,65 @@
+===============================================================
+Creating vocabulary by dictionary in gensim - loading textual features.
+
+Creating feature2corpus_id index.
+Loading from file /media/dmacjam/Data disc/Open data/TBIR/processed_data/corpus/train-image-ids.dat
+
+===============================================================
+Training LDA.
+
+===============================================================
+Creating testing img_doc-topic matrix - loading visual features and applying LDA.
+
+Loading from file /media/dmacjam/Data disc/Open data/TBIR/processed_data/testing/img-doc-topic-matrix.dat
+
+Loading from file /media/dmacjam/Data disc/Open data/TBIR/processed_data/testing/testing-img-ids.dat
+
+Testing img count is 200011
+
+===============================================================
+Creating testing texual_doc-topic matrix - loading teaser1 textual data and applying LDA.
+
+Read 10000
+Read 20000
+Read 30000
+Read 40000
+Read 50000
+Read 60000
+Read 70000
+Read 80000
+Read 90000
+Read 100000
+Read 110000
+Read 120000
+Read 130000
+Read 140000
+Read 150000
+Read 160000
+Read 170000
+Read 180000
+Pickling to file /media/dmacjam/Data disc/Open data/TBIR/processed_data/testing/textual-doc-topic-matrix.dat
+
+Testing textual count is 189888
+
+===============================================================
+Creating ranking.
+
+Written 10000
+Written 20000
+Written 30000
+Written 40000
+Written 50000
+Written 60000
+Written 70000
+Written 80000
+Written 90000
+Written 100000
+Written 110000
+Written 120000
+Written 130000
+Written 140000
+Written 150000
+Written 160000
+Written 170000
+Written 180000
+Not enough results for 880 documents

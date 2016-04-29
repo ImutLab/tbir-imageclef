@@ -1,0 +1,285 @@
+===============================================================
+Creating vocabulary by dictionary in gensim - loading textual features.
+
+Creating feature2corpus_id index.
+Loading from file /media/dmacjam/Data disc/Open data/TBIR/processed_data/corpus/train-image-ids.dat
+
+===============================================================
+Training LDA.
+
+===============================================================
+Reading teaser ground truth.
+
+===============================================================
+Creating teaser img_doc-topic matrix - loading visual features and applying LDA.
+
+Pickling to file /media/dmacjam/Data disc/Open data/TBIR/processed_data/teaser/img-topic-matrix.dat
+
+Testing img count is 3339
+
+===============================================================
+Creating testing texual_doc-topic matrix - loading teaser1 textual data and applying LDA.
+
+Pickling to file /media/dmacjam/Data disc/Open data/TBIR/processed_data/teaser/txt-topic-matrix.dat
+
+Testing textual count is 3337
+
+===============================================================
+Creating ranking.
+
+Position 38 with weight 0.991518318653
+Position 79 with weight 0.97017288208
+Position 62 with weight 0.717572033405
+Position 76 with weight 0.828438222408
+Position 36 with weight 0.807029306889
+Position 28 with weight 0.919300973415
+Position 96 with weight 0.790694773197
+Position 64 with weight 0.909902691841
+Position 20 with weight 0.971375584602
+Position 42 with weight 0.967746257782
+Position 50 with weight 0.437780052423
+Position 39 with weight 0.889266133308
+Position 83 with weight 0.880988895893
+Position 0 with weight 0.983003377914
+Position 79 with weight 0.924869298935
+Position 19 with weight 0.94391387701
+Position 43 with weight 0.877721428871
+Position 79 with weight 0.351141959429
+Position 23 with weight 0.721478879452
+Position 7 with weight 0.988697230816
+Position 5 with weight 0.721463143826
+Position 10 with weight 0.852796852589
+Position 86 with weight 0.941271662712
+Position 15 with weight 0.957299351692
+Position 13 with weight 0.81983011961
+Position 8 with weight 0.911867201328
+Position 48 with weight 0.503601014614
+Position 11 with weight 0.894208133221
+Position 55 with weight 0.959123909473
+Position 23 with weight 0.89082211256
+Position 25 with weight 0.829120159149
+Position 93 with weight 0.994050204754
+Position 62 with weight 0.890325665474
+Position 55 with weight 0.854629933834
+Position 34 with weight 0.935668766499
+Position 42 with weight 0.923032462597
+Position 37 with weight 0.936796545982
+Position 51 with weight 0.518765985966
+Position 91 with weight 0.96376824379
+Position 73 with weight 0.627341926098
+Position 98 with weight 0.576296031475
+Position 83 with weight 0.373718500137
+Position 14 with weight 0.952550768852
+Position 6 with weight 0.833614110947
+Position 93 with weight 0.973186790943
+Position 0 with weight 0.9630458951
+Position 20 with weight 0.770713925362
+Position 70 with weight 0.330504536629
+Position 42 with weight 0.751105964184
+Position 87 with weight 0.606643199921
+Position 46 with weight 0.493072509766
+Position 42 with weight 0.499428778887
+Position 79 with weight 0.435002148151
+Position 49 with weight 0.996202588081
+Position 12 with weight 0.850159049034
+Position 21 with weight 0.989674091339
+Position 24 with weight 0.849377512932
+Position 13 with weight 0.888531386852
+Position 90 with weight 0.244853466749
+Position 71 with weight 0.724754214287
+Position 86 with weight 0.610213041306
+Position 48 with weight 0.646023213863
+Position 94 with weight 0.208026632667
+Position 8 with weight 0.943498790264
+Position 40 with weight 0.980417072773
+Position 21 with weight 0.955910205841
+Position 27 with weight 0.958180546761
+Position 8 with weight 0.843646287918
+Position 15 with weight 0.636330366135
+Position 79 with weight 0.404870629311
+Position 55 with weight 0.836931288242
+Position 9 with weight 0.84426510334
+Position 90 with weight 0.339906215668
+Position 82 with weight 0.942198395729
+Position 97 with weight 0.880174934864
+Position 20 with weight 0.992422282696
+Position 8 with weight 0.892257034779
+Position 7 with weight 0.77533107996
+Position 78 with weight 0.991989195347
+Position 43 with weight 0.929316759109
+Position 3 with weight 0.910809993744
+Position 53 with weight 0.674104452133
+Position 42 with weight 0.947610974312
+Position 97 with weight 0.977078974247
+Position 28 with weight 0.668697357178
+Position 79 with weight 0.877502918243
+Position 51 with weight 0.578796923161
+Position 51 with weight 0.748662054539
+Position 75 with weight 0.733373582363
+Position 15 with weight 0.892963469028
+Position 79 with weight 0.799549043179
+Position 8 with weight 0.988529086113
+Position 1 with weight 0.911291182041
+Position 12 with weight 0.982183694839
+Position 72 with weight 0.942680478096
+Position 33 with weight 0.806717514992
+Position 59 with weight 0.903782904148
+Position 50 with weight 0.652394533157
+Position 81 with weight 0.815084278584
+Position 4 with weight 0.956978678703
+Position 53 with weight 0.850814044476
+Position 0 with weight 0.995795488358
+Position 6 with weight 0.728596150875
+Position 25 with weight 0.844417095184
+Position 66 with weight 0.401412695646
+Position 2 with weight 0.979550182819
+Position 33 with weight 0.606561720371
+Position 72 with weight 0.922767937183
+Position 70 with weight 0.97649627924
+Position 7 with weight 0.923100054264
+Position 10 with weight 0.734847187996
+Position 40 with weight 0.911395430565
+Position 89 with weight 0.234423786402
+Position 21 with weight 0.937242746353
+Position 3 with weight 0.996867001057
+Position 60 with weight 0.857249200344
+Position 47 with weight 0.974636137486
+Position 48 with weight 0.780490458012
+Position 67 with weight 0.909089446068
+Position 76 with weight 0.877309441566
+Position 0 with weight 0.960182845592
+Position 60 with weight 0.778670191765
+Position 91 with weight 0.874029457569
+Position 37 with weight 0.929308772087
+Position 18 with weight 0.919991672039
+Position 12 with weight 0.944821953773
+Position 31 with weight 0.837660908699
+Position 29 with weight 0.995407700539
+Position 8 with weight 0.778401434422
+Position 34 with weight 0.925007104874
+Position 19 with weight 0.84255027771
+Position 85 with weight 0.47901275754
+Position 81 with weight 0.981300354004
+Position 22 with weight 0.721499979496
+Position 2 with weight 0.975744843483
+Position 36 with weight 0.973737418652
+Position 30 with weight 0.63655269146
+Position 16 with weight 0.962341964245
+Position 58 with weight 0.856598496437
+Position 91 with weight 0.632807195187
+Position 67 with weight 0.432684212923
+Position 69 with weight 0.985644042492
+Position 55 with weight 0.997350096703
+Position 28 with weight 0.889280259609
+Position 4 with weight 0.968959867954
+Position 44 with weight 0.788934707642
+Position 56 with weight 0.76114487648
+Position 28 with weight 0.922318518162
+Position 51 with weight 0.990411996841
+Position 11 with weight 0.957482814789
+Position 29 with weight 0.987673223019
+Position 37 with weight 0.857901930809
+Position 73 with weight 0.971125125885
+Position 20 with weight 0.964223504066
+Position 37 with weight 0.747644066811
+Position 43 with weight 0.68358451128
+Position 73 with weight 0.624865055084
+Position 78 with weight 0.9411200881
+Position 97 with weight 0.507869303226
+Position 52 with weight 0.845945060253
+Position 17 with weight 0.963011324406
+Position 62 with weight 0.453794568777
+Position 2 with weight 0.945146739483
+Position 2 with weight 0.961597979069
+Position 9 with weight 0.728629231453
+Position 81 with weight 0.948990046978
+Position 34 with weight 0.832558751106
+Position 38 with weight 0.67974704504
+Position 40 with weight 0.524604797363
+Position 18 with weight 0.955082952976
+Position 62 with weight 0.713791787624
+Position 74 with weight 0.725425720215
+Position 79 with weight 0.827422618866
+Position 99 with weight 0.918839812279
+Position 49 with weight 0.978808939457
+Position 18 with weight 0.994184136391
+Position 56 with weight 0.780856192112
+Position 54 with weight 0.855304002762
+Position 3 with weight 0.886045098305
+Position 51 with weight 0.736094772816
+Position 96 with weight 0.72861623764
+Position 34 with weight 0.88416492939
+Position 20 with weight 0.80429059267
+Position 51 with weight 0.863571882248
+Position 84 with weight 0.940127313137
+Position 79 with weight 0.363957077265
+Position 92 with weight 0.927585959435
+Position 21 with weight 0.845254898071
+Position 37 with weight 0.865810930729
+Position 0 with weight 0.96362221241
+Position 6 with weight 0.578672468662
+Position 17 with weight 0.835011124611
+Position 87 with weight 0.250181853771
+Position 25 with weight 0.917730987072
+Position 64 with weight 0.944930911064
+Position 61 with weight 0.905127704144
+Position 86 with weight 0.650348424911
+Position 54 with weight 0.980520367622
+Position 41 with weight 0.862364888191
+Position 9 with weight 0.947277903557
+Position 86 with weight 0.880120873451
+Position 58 with weight 0.962988555431
+Position 30 with weight 0.973140954971
+Position 84 with weight 0.962011277676
+Position 88 with weight 0.874601960182
+Position 21 with weight 0.963487148285
+Position 10 with weight 0.974488794804
+Position 32 with weight 0.88604092598
+Position 77 with weight 0.492721498013
+Position 44 with weight 0.514164566994
+Position 13 with weight 0.977918624878
+Position 72 with weight 0.768903672695
+Position 8 with weight 0.958759307861
+Position 78 with weight 0.68370038271
+Position 49 with weight 0.878116726875
+Position 71 with weight 0.826861798763
+Position 4 with weight 0.79721647501
+Position 10 with weight 0.846068382263
+Position 4 with weight 0.827952504158
+Position 42 with weight 0.54239487648
+Position 70 with weight 0.639354050159
+Position 42 with weight 0.501526296139
+Position 68 with weight 0.470837682486
+Position 31 with weight 0.99673473835
+Position 71 with weight 0.406716674566
+Position 97 with weight 0.775982022285
+Position 94 with weight 0.940701782703
+Position 45 with weight 0.906035900116
+Position 12 with weight 0.812650680542
+Position 41 with weight 0.555688142776
+Position 10 with weight 0.895179212093
+Position 25 with weight 0.954569816589
+Position 66 with weight 0.867154359818
+Position 46 with weight 0.921981394291
+Position 21 with weight 0.766024589539
+Position 57 with weight 0.784048140049
+Position 81 with weight 0.957052648067
+Position 93 with weight 0.222412228584
+Position 63 with weight 0.640207529068
+Position 98 with weight 0.885261058807
+Position 66 with weight 0.634282886982
+Position 60 with weight 0.703748881817
+Position 4 with weight 0.987391889095
+Position 95 with weight 0.808865845203
+Position 38 with weight 0.426085352898
+Position 65 with weight 0.787882626057
+Position 90 with weight 0.780834376812
+Position 29 with weight 0.977947294712
+Position 87 with weight 0.960676014423
+Position 84 with weight 0.979525983334
+Position 70 with weight 0.606854975224
+Position 34 with weight 0.553468942642
+Position 51 with weight 0.461984366179
+Position 91 with weight 0.983283221722
+Total score: 254
+Not enough results for 0 documents
